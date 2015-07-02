@@ -157,11 +157,11 @@ class NotifynderNotification implements StoreNotification {
      * @param $paginate
      * @return mixed
      */
-    public function getNotRead($to_id,$limit,$paginate)
+    public function getNotRead($to_id,$limit,$paginate, $orderDate = 'desc')
     {
         $notifications =  $this->notifynderRepo->entity($this->entity);
 
-        return $notifications->getNotRead($to_id,$limit,$paginate);
+        return $notifications->getNotRead($to_id,$limit,$paginate,$orderDate);
     }
 
     /**
@@ -214,4 +214,4 @@ class NotifynderNotification implements StoreNotification {
 
         return $notifications->countNotRead($to_id);
     }
-} 
+}

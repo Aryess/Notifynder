@@ -182,14 +182,14 @@ class NotificationRepository {
      * @param $paginate
      * @return mixed
      */
-    public function getNotRead($to_id, $limit, $paginate)
+    public function getNotRead($to_id, $limit, $paginate, $order = "desc")
     {
         if ( is_null($limit) )
         {
             $result = $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
-                ->orderBy('read','ASC')
+                ->orderBy('read',$order)
                 ->get()->parse();
         }
 
@@ -198,7 +198,7 @@ class NotificationRepository {
             $result = $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
-                ->orderBy('read','ASC')
+                ->orderBy('read',$order)
                 ->paginate($limit);
         }
         else
@@ -207,7 +207,7 @@ class NotificationRepository {
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
                 ->limit($limit)
-                ->orderBy('read','ASC')
+                ->orderBy('read',$order)
                 ->get()->parse();
         }
 
@@ -267,4 +267,4 @@ class NotificationRepository {
             ->select($this->db->raw('Count(*) as notRead'))
             ->first();
     }
-} 
+}

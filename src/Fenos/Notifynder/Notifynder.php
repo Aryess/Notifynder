@@ -120,7 +120,7 @@ class Notifynder implements NotifynderInterface {
 
         return $this;
     }
-    
+
     /**
      * Add a category
      *
@@ -293,11 +293,11 @@ class Notifynder implements NotifynderInterface {
      * @param bool $paginate
      * @return mixed
      */
-    public function getNotRead($to_id, $limit = null, $paginate = false)
+    public function getNotRead($to_id, $limit = null, $paginate = false, $order = "desc")
     {
         $notifications = $this->notification->entity($this->entity);
 
-        return $notifications->getNotRead($to_id,$limit,$paginate);
+        return $notifications->getNotRead($to_id,$limit,$paginate, $order);
     }
 
     /**
@@ -469,4 +469,4 @@ class Notifynder implements NotifynderInterface {
     {
         return $this->categoriesContainer;
     }
-} 
+}

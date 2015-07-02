@@ -30,7 +30,7 @@ interface NotifynderInterface {
      * @return $this
      */
     public function entity($name);
-    
+
     /**
      * Add a category
      *
@@ -39,7 +39,7 @@ interface NotifynderInterface {
      * @return static
      */
     public function addCategory($name, $text);
-    
+
     /**
      * Update a category
      *
@@ -157,7 +157,7 @@ interface NotifynderInterface {
      * @param bool $paginate
      * @return mixed
      */
-    public function getNotRead($to_id, $limit = null, $paginate = false);
+    public function getNotRead($to_id, $limit = null, $paginate = false, $order = "desc");
 
     /**
      * Get all notifications of the
