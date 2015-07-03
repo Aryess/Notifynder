@@ -3,6 +3,7 @@ namespace Fenos\Notifynder;
 
 use Fenos\Notifynder\Builder\NotifynderBuilder;
 
+
 /**
  * Class Notifynder
  *
@@ -10,8 +11,7 @@ use Fenos\Notifynder\Builder\NotifynderBuilder;
  *
  * @package Fenos\Notifynder
  */
-interface NotifynderInterface
-{
+interface NotifynderInterface {
 
     /**
      * Set the category of the
@@ -43,8 +43,8 @@ interface NotifynderInterface
     /**
      * Update a category
      *
-     * @param  array $updates
-     * @param        $id
+     * @param array $updates
+     * @param       $id
      * @return mixed
      */
     public function updateCategory(array $updates, $id);
@@ -53,7 +53,7 @@ interface NotifynderInterface
      * Send notifications
      * Both multiple and single
      *
-     * @param  array $info
+     * @param array $info
      * @return mixed
      */
     public function send(array $info);
@@ -62,7 +62,7 @@ interface NotifynderInterface
      * Send immediately the notification
      * even if the queue is enabled
      *
-     * @param  array $info
+     * @param array $info
      * @return mixed
      */
     public function sendNow(array $info);
@@ -70,7 +70,7 @@ interface NotifynderInterface
     /**
      * Send One notification
      *
-     * @param  array $info
+     * @param array $info
      * @return mixed
      */
     public function sendOne(array $info);
@@ -78,7 +78,7 @@ interface NotifynderInterface
     /**
      * Send multiple notifications
      *
-     * @param  array                $info
+     * @param array $info
      * @return Senders\SendMultiple
      */
     public function sendMultiple(array $info);
@@ -104,9 +104,9 @@ interface NotifynderInterface
      * Read notification in base the number
      * Given
      *
-     * @param         $to_id
-     * @param         $numbers
-     * @param  string $order
+     * @param        $to_id
+     * @param        $numbers
+     * @param string $order
      * @return mixed
      */
     public function readLimit($to_id, $numbers, $order = "ASC");
@@ -132,9 +132,9 @@ interface NotifynderInterface
      * Delete number of notifications
      * secified of the given entity
      *
-     * @param         $to_id
-     * @param         $number
-     * @param  string $order
+     * @param        $to_id
+     * @param        $number
+     * @param string $order
      * @return mixed
      */
     public function deleteLimit($to_id, $number, $order = "ASC");
@@ -152,23 +152,23 @@ interface NotifynderInterface
      * Get Notifications not read
      * of the given entity
      *
-     * @param        $to_id
-     * @param  null  $limit
-     * @param  bool  $paginate
+     * @param      $to_id
+     * @param null $limit
+     * @param bool $paginate
      * @return mixed
      */
-    public function getNotRead($to_id, $limit = null, $paginate = false);
+    public function getNotRead($to_id, $limit = null, $paginate = false, $order = "desc");
 
     /**
      * Get all notifications of the
      * given entity
      *
-     * @param        $to_id
-     * @param  null  $limit
-     * @param  bool  $paginate
+     * @param      $to_id
+     * @param null $limit
+     * @param bool $paginate
      * @return mixed
      */
-    public function getAll($to_id, $limit = null, $paginate = false);
+    public function getAll($to_id, $limit = null, $paginate = false, $order = 'DESC');
 
     /**
      * Get number of notification not read
@@ -230,8 +230,8 @@ interface NotifynderInterface
     /**
      * Associate events to categories
      *
-     * @param        $data
-     * @param  array $delegation
+     * @param       $data
+     * @param array $delegation
      * @return mixed
      */
     public function delegate($data = null, array $delegation);
