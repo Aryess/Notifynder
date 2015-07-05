@@ -238,10 +238,20 @@ class NotificationRepository {
 
         if ($paginate)
         {
-            return $this->notification->with('body','from')
+            $result = $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->orderBy('created_at', $order)
                 ->paginate($limit);
+
+            // $result->data->parse();
+            $parse = new NotifynderParse();
+
+	        foreach ($result as $key => $item)
+	        {
+				$item->body->text = $parse->parse($item, $item->extra);
+	        }
+
+	        return $result;
         }
         else
         {
