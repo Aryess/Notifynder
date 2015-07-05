@@ -2,6 +2,7 @@
 
 use Fenos\Notifynder\Models\Notification;
 use Fenos\Notifynder\Senders\StoreNotification;
+use Fenos\Notifynder\Parse\NotifynderParse;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
